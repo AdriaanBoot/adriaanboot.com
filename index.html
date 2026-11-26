@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Technical marketing, analytics tracking, server-side tagging and data reporting expertise.">
+  <title>Adriaan Boot | Technical Marketeer & Analytics</title>
+
+  <style>
+    :root {
+      --green: #15a36d;
+      --green-dark: #08784d;
+      --green-light: #dcf7e9;
+      --ink: #14251d;
+      --muted: #66766e;
+      --white: #ffffff;
+      --background: #f5faf7;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, Arial, sans-serif;
+      color: var(--ink);
+      background: var(--background);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 84px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      background: var(--green);
+      color: var(--white);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    nav a:hover {
+      color: var(--green);
+    }
+
+    .nav-button,
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 12px 22px;
+      border-radius: 10px;
+      background: var(--green);
+      color: var(--white);
+      font-weight: 800;
+      transition: 180ms ease;
+    }
+
+    .nav-button:hover,
+    .button:hover {
+      background: var(--green-dark);
+      transform: translateY(-2px);
+    }
+
+    .hero {
+      min-height: 570px;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      align-items: center;
+      gap: 56px;
+      padding: 70px 0 90px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      padding: 8px 14px;
+      border: 1px solid #bee9d5;
+      border-radius: 999px;
+      background: var(--green-light);
+      color: var(--green-dark);
+      font-size: 13px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    h1 {
+      max-width: 760px;
+      margin: 22px 0 24px;
+      font-size: clamp(46px, 7vw, 78px);
+      line-height: 1.02;
+      letter-spacing: -0.055em;
+    }
+
+    h1 span {
+      color: var(--green);
+    }
+
+    .hero p {
+      max-width: 600px;
+      margin: 0 0 32px;
+      color: var(--muted);
+      font-size: 19px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .button-secondary {
+      background: var(--white);
+      color: var(--ink);
+      border: 1px solid #d7e6dd;
+    }
+
+    .button-secondary:hover {
+      background: var(--white);
+      color: var(--green-dark);
+    }
+
+    .analytics-card {
+      position: relative;
+      min-height: 430px;
+      overflow: hidden;
+      border-radius: 28px;
+      background: var(--ink);
+      box-shadow: 0 30px 70px rgba(20, 37, 29, 0.16);
+    }
+
+    .analytics-card::before {
+      content: "";
+      position: absolute;
+      width: 280px;
+      height: 280px;
+      right: -90px;
+      top: -100px;
+      border-radius: 50%;
+      background: var(--green);
+      opacity: 0.8;
+      filter: blur(2px);
+    }
+
+    .card-content {
+      position: relative;
+      z-index: 1;
+      padding: 34px;
+      color: var(--white);
+    }
+
+    .card-label {
+      color: #b2c8bd;
+      font-size: 14px;
+    }
+
+    .card-value {
+      margin: 8px 0 24px;
+      font-size: 52px;
+      font-weight: 800;
+      letter-spacing: -0.05em;
+    }
+
+    .chart {
+      height: 190px;
+      display: flex;
+      align-items: end;
+      gap: 10px;
+      margin-top: 32px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+    }
+
+    .chart span {
+      flex: 1;
+      min-width: 16px;
+      border-radius: 8px 8px 0 0;
+      background: var(--green);
+    }
+
+    .chart span:nth-child(1) { height: 28%; }
+    .chart span:nth-child(2) { height: 48%; }
+    .chart span:nth-child(3) { height: 40%; }
+    .chart span:nth-child(4) { height: 62%; }
+    .chart span:nth-child(5) { height: 56%; }
+    .chart span:nth-child(6) { height: 82%; }
+    .chart span:nth-child(7) { height: 96%; }
+
+    section {
+      scroll-margin-top: 40px;
+    }
+
+    .services {
+      padding: 100px 0;
+      background: var(--white);
+    }
+
+    .section-heading {
+      max-width: 680px;
+      margin-bottom: 44px;
+    }
+
+    .section-heading h2 {
+      margin: 12px 0 16px;
+      font-size: clamp(36px, 5vw, 52px);
+      line-height: 1.08;
+      letter-spacing: -0.04em;
+    }
+
+    .section-heading p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .service-card {
+      min-height: 250px;
+      padding: 28px;
+      border: 1px solid #e2ece6;
+      border-radius: 18px;
+      background: #fbfdfc;
+      transition: 180ms ease;
+    }
+
+    .service-card:hover {
+      border-color: #aedfc7;
+      transform: translateY(-5px);
+      box-shadow: 0 16px 40px rgba(20, 37, 29, 0.07);
+    }
+
+    .service-number {
+      display: grid;
+      place-items: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: var(--green-light);
+      color: var(--green-dark);
+      font-weight: 800;
+    }
+
+    .service-card h3 {
+      margin: 28px 0 10px;
+      font-size: 21px;
+    }
+
+    .service-card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .cta {
+      margin: 90px auto;
+      padding: 52px;
+      border-radius: 24px;
+      background: var(--green);
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+    }
+
+    .cta h2 {
+      max-width: 600px;
+      margin: 0;
+      font-size: clamp(32px, 5vw, 48px);
+      line-height: 1.1;
+      letter-spacing: -0.04em;
+    }
+
+    .cta .button {
+      flex-shrink: 0;
+      background: var(--ink);
+    }
+
+    .cta .button:hover {
+      background: #26372f;
+    }
+
+    footer {
+      padding: 28px 0 36px;
+      border-top: 1px solid #dfebe4;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    @media (max-width: 850px) {
+      nav a:not(.nav-button) {
+        display: none;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        padding-top: 40px;
+      }
+
+      .analytics-card {
+        min-height: 390px;
+      }
+
+      .service-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .cta {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 38px 28px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .container {
+        width: min(100% - 28px, 1120px);
+      }
+
+      header {
+        min-height: 72px;
+      }
+
+      .brand-name {
+        display: none;
+      }
+
+      .nav-button {
+        min-height: 44px;
+        padding: 10px 14px;
+      }
+
+      .hero {
+        gap: 38px;
+      }
+
+      h1 {
+        font-size: 44px;
+      }
+
+      .hero p {
+        font-size: 17px;
+      }
+
+      .hero-actions,
+      .hero-actions .button {
+        width: 100%;
+      }
+
+      .analytics-card {
+        min-height: 360px;
+      }
+
+      .card-content {
+        padding: 24px;
+      }
+
+      .services {
+        padding: 70px 0;
+      }
+
+      .footer-content {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="container">
+    <a class="brand" href="#" aria-label="Homepage">
+      <span class="brand-mark" aria-hidden="true">A</span>
+      <span class="brand-name">Analytics Expert</span>
+    </a>
+
+    <nav aria-label="Primary navigation">
+      <a href="#services">Services</a>
+      <a href="#contact" class="nav-button">Let’s talk</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="container">
+      <section class="hero">
+        <div>
+          <span class="eyebrow">Technical marketing & analytics</span>
+          <h1>Turn better data into <span>better decisions.</span></h1>
+          <p>
+            I help businesses measure, understand and improve their digital
+            performance with reliable tracking and actionable reporting.
+          </p>
+
+          <div class="hero-actions">
+            <a class="button" href="#services">Explore services</a>
+            <a class="button button-secondary" href="#contact">Get in touch</a>
+          </div>
+        </div>
+
+        <aside class="analytics-card" aria-label="Analytics performance preview">
+          <div class="card-content">
+            <div class="card-label">Performance overview</div>
+            <div class="card-value">+32%</div>
+
+            <div class="chart" aria-hidden="true">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+        </aside>
+      </section>
+    </div>
+
+    <section class="services" id="services">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Expertise</span>
+          <h2>From tracking to insights.</h2>
+          <p>
+            Practical digital analytics solutions built around your business,
+            from implementation to measurement and optimization.
+          </p>
+        </div>
+
+        <div class="service-grid">
+          <article class="service-card">
+            <span class="service-number">01</span>
+            <h3>Web Analytics</h3>
+            <p>
+              Accurate measurement plans, implementation and analysis that reveal
+              how users interact with your website.
+            </p>
+          </article>
+
+          <article class="service-card">
+            <span class="service-number">02</span>
+            <h3>Tracking Specialist</h3>
+            <p>
+              Reliable event tracking and privacy-conscious data collection across
+              websites and digital platforms.
+            </p>
+          </article>
+
+          <article class="service-card">
+            <span class="service-number">03</span>
+            <h3>Server-Side GTM</h3>
+            <p>
+              Improved data quality, greater control and more resilient measurement
+              with server-side Google Tag Manager.
+            </p>
+          </article>
+
+          <article class="service-card">
+            <span class="service-number">04</span>
+            <h3>Data Studio Reporting</h3>
+            <p>
+              Clear, interactive dashboards in Looker Studio that turn complex
+              performance data into actionable insights.
+            </p>
+          </article>
+
+          <article class="service-card">
+            <span class="service-number">05</span>
+            <h3>BigQuery</h3>
+            <p>
+              Scalable data analysis and data modeling for detailed reporting,
+              advanced segmentation and custom solutions.
+            </p>
+          </article>
+
+          <article class="service-card">
+            <span class="service-number">06</span>
+            <h3>Feed-Based PPC</h3>
+            <p>
+              Structured product feeds and campaign strategies that improve
+              visibility, relevance and paid advertising performance.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <div class="container" id="contact">
+      <aside class="cta">
+        <h2>Ready to make your data work harder?</h2>
+        <a class="button" href="mailto:hello@example.com">Let’s talk</a>
+      </aside>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container footer-content">
+      <span>© 2026 Analytics Expert</span>
+      <span>Technical marketing · Analytics · Data</span>
+    </div>
+  </footer>
+</body>
+</html>
